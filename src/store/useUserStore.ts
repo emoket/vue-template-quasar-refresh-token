@@ -1,43 +1,53 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
 import router from '../router/index';
-import { Usuario, Credentials, AuthorizeStatus } from '../auth/interfaces';
+import { Username, Credentials, AuthorizeStatus } from '../auth/interfaces';
 
 export const useUserStore = defineStore('user', () => {
-  const userData = ref<Usuario | null>(null);
-  const userToken = ref<string | undefined>(undefined); 
+  const userData = ref<Username | null>(null);
+  const userToken = ref<string | undefined>(undefined);
   const loadingUser = ref<boolean>(false);
-  const timerForRefreshToken = ref<number | undefined>(undefined);
+  // const timerForRefreshToken = ref<number | undefined>(undefined);
+  const timerForRefreshToken = ref<NodeJS.Timeout | undefined>(undefined); // Change the type to NodeJS.Timeout
 
   const callRefreshToken = (durationTokenInMinutes: number) => {
-    timerForRefreshToken.value = setTimeout(async () => {
-      await refreshToken();
-    }, durationTokenInMinutes * 60 * 1000);
+    timerForRefreshToken.value = setTimeout(
+      async () => {
+        await refreshToken();
+      },
+      durationTokenInMinutes * 60 * 1000,
+    );
   };
 
   const clearRefreshToken = () => {
     clearTimeout(timerForRefreshToken.value);
   };
 
-  const setCurrentUserData = ({ usuario, rol, accessToken, durationTokenInMinutes }: Usuario) => {
+  const setCurrentUserData = ({
+    username,
+    rol,
+    accessToken,
+    durationTokenInMinutes,
+  }: Username) => {
     userData.value = {
-      usuario,
-      rol
+      username,
+      rol,
     };
-    userToken.value = accessToken; 
-    sessionStorage.setItem('user', AuthorizeStatus.authorize); 
+    userToken.value = accessToken;
+    sessionStorage.setItem('user', AuthorizeStatus.authorize);
     callRefreshToken(durationTokenInMinutes!);
   };
 
   const userLogin = async (payload: Credentials) => {
+    console.log('payload = ' + JSON.stringify(payload));
     try {
       loadingUser.value = true;
       await setCurrentUserData({
-        usuario: 'admin',
+        username: 'admin',
         rol: 'admin',
         accessToken: 'Token JWT inicial',
-        durationTokenInMinutes: 1
-      } as Usuario);
+        durationTokenInMinutes: 1,
+      } as Username);
       router.push({ name: 'home' });
     } catch (error) {
       console.error(error);
@@ -50,11 +60,11 @@ export const useUserStore = defineStore('user', () => {
     try {
       console.log('onRefresh ⚡');
       setCurrentUserData({
-        usuario: 'admin',
+        username: 'admin',
         rol: 'admin',
         accessToken: 'TokenSuperSeguroRefresh',
-        durationTokenInMinutes: 1
-      } as Usuario);
+        durationTokenInMinutes: 1,
+      } as Username);
     } catch (error) {
       sessionStorage.removeItem('user');
       console.error(error);
@@ -75,6 +85,6 @@ export const useUserStore = defineStore('user', () => {
     loadingUser,
     userLogin,
     logoutUser,
-    refreshToken
+    refreshToken,
   };
 });

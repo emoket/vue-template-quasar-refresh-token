@@ -1,12 +1,7 @@
-<template> 
-     <h1> Políticas </h1> 
-</template> 
+<script setup lang="ts"></script>
 
-<script setup lang="ts">
- 
-     
-</script> 
+<template>
+  <h1>Politicas</h1>
+</template>
 
-<style lang='scss' scoped> 
-
-</style>
+<style lang="scss" scoped></style>

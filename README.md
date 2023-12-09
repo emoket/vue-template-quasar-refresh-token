@@ -19,9 +19,9 @@ Please, if you want more information about the technologies used, visit the docu
 - [Axios](https://axios-http.com)
 - [VueUse](https://vueuse.org/)
 
-*** 
+---
 
-  ... MORE COMING SOON 😍 !!
+... MORE COMING SOON 😍 !!
 
 Yu can use this project as a base for your project, just clone it and start coding.
 
@@ -40,7 +40,7 @@ I want tell you that this project is not finished yet, I will be adding more fea
 - [x] Guard Protected Routes
 - [x] Refresh Token
 - [x] Logout
-- [] Change Language 
+- [] Change Language
 - [x] Change light/dark theme
 - [] Api calls with axios
 
@@ -59,46 +59,52 @@ And many thanks to all the people in the next list, who have contributed to the 
 - Thanks to the [Axios](https://axios-http.com) team for the great work they do.
 - Thanks to the [VueUse](https://vueuse.org/) team for the great work they do.
 
-and special thanks to  [@bluuweb](https://github.com/bluuweb)  for the great inspiration he gives me with his videos, [@Klerith](https://github.com/Klerith) for the great inspiration he gives me with his videos.
-
+and special thanks to [@bluuweb](https://github.com/bluuweb) for the great inspiration he gives me with his videos, [@Klerith](https://github.com/Klerith) for the great inspiration he gives me with his videos.
 
 # How to use
 
 ### Clone the repository
+
 ```bash
 git clone [URL OF THE REPOSITORY]
 ```
 
 ### Go to the project folder
+
 ```bash
 cd [PATH OF THE PROJECT]
 ```
 
 ### Install the dependencies
+
 ```bash
 npm install or yarn
 ```
-or 
+
+or
+
 ```bash
 yarn
 ```
 
 ### Execute the project
+
 ```bash
 npm run dev
 ```
-or 
+
+or
+
 ```bash
 yarn dev
 ```
 
 ### Enjoy it! 🚀
-Put on some music, put the cell phone away for a moment and come on, you have a project to deliver or create a hobby project!
- 
 
+Put on some music, put the cell phone away for a moment and come on, you have a project to deliver or create a hobby project!
 
 ## License
 
 I don´t have any license of any technology used in this project, so I don´t know if I can use a license in this project, but I don't care.. I only want to help people with this project, so you can use it as you want, but I would appreciate mention all creator/community of technologies used in this project in your project.
- 
-# Made with ❤️ by [Xansiety](https://github.com/Xansiety) 
+
+# Made with ❤️ by [Xansiety](https://github.com/Xansiety)
