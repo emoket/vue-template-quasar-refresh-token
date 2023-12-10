@@ -2,6 +2,8 @@
 import { useQuasar } from 'quasar';
 import { watch } from 'vue';
 
+import { ionSunnyOutline, ionMoonOutline } from '@quasar/extras/ionicons-v6';
+
 const $q = useQuasar();
 const isDarkMode = JSON.parse(localStorage.getItem('darkMode') || '{}');
 
@@ -25,7 +27,7 @@ const preferenceUser = () => {
     flat
     round
     color="white"
-    :icon="$q.dark.isActive ? 'light_mode' : 'dark_mode'"
+    :icon="$q.dark.isActive ? ionSunnyOutline : ionMoonOutline"
     @click="preferenceUser"
   />
 </template>
