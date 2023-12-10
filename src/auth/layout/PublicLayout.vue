@@ -7,10 +7,10 @@ import DarkToggle from '../../theme/DarkToggle.vue';
     <q-header reveal class="text-white bg-primary">
       <q-toolbar>
         <q-toolbar-title>
-          <q-avatar>
+          <!-- <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
-          </q-avatar>
-          Title
+          </q-avatar> -->
+          NE.ONE
         </q-toolbar-title>
         <DarkToggle />
       </q-toolbar>
