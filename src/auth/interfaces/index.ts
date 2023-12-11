@@ -1,6 +1,6 @@
 export interface Username {
   username?: string;
-  rol?: string;
+  role?: string;
   accessToken?: string | undefined;
   durationTokenInMinutes?: number;
 }

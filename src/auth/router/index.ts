@@ -1,4 +1,5 @@
 import PublicLayout from '../layout/PublicLayout.vue';
+
 export default {
   name: 'auth',
   component: PublicLayout,
