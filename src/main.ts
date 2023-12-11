@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-import { Quasar } from 'quasar';
+import { Quasar, AppFullscreen } from 'quasar';
 import router from './router';
 
 import quasarLang from 'quasar/lang/es';
@@ -17,11 +17,13 @@ const app = createApp(App);
 app.use(router);
 app.use(pinia);
 app.use(Quasar, {
-  plugins: {}, // import Quasar plugins and add here
+  plugins: {
+    AppFullscreen,
+  }, // import Quasar plugins and add here
   lang: quasarLang,
 
   config: {
-    // dark: 'auto',
+    dark: 'auto',
     brand: {
       // primary: '#e46262',
       // ... or all other brand colors
