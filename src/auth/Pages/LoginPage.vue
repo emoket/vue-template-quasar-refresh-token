@@ -105,53 +105,10 @@ const onReset = () => {
       </q-page>
     </q-page-container>
   </q-layout>
-
-  <!-- <q-card bordered flat class="q-pa-md" style="width: 300px">
-    <q-form @submit="onSubmit" @reset="onReset">
-      <q-card-section>
-        <q-input
-          autofocus
-          filled
-          v-model="credentials.username"
-          ref="username"
-          label="사번 *"
-          hint="8 또는 9사번 8자리"
-          lazy-rules
-          :rules="[(val) => (val && val.length > 7) || '필수 항목입니다.']"
-        >
-          <template v-slot:prepend>
-            <q-icon :name="ionPersonOutline" />
-          </template>
-        </q-input>
-      </q-card-section>
-      <q-card-section>
-        <q-input
-          filled
-          v-model="credentials.password"
-          ref="password"
-          label="비밀번호 *"
-          hint="LDAP Password"
-          lazy-rules
-          :rules="[(val) => (val && val.length > 0) || '필수 항목입니다.']"
-        >
-          <template v-slot:prepend>
-            <q-icon :name="ionLockClosedOutline" />
-          </template>
-        </q-input>
-      </q-card-section>
-      <q-card-actions class="q-px-md">
-        <q-btn label="로그인" type="submit" color="primary" />
-        <q-space />
-        <q-btn
-          label="초기화"
-          type="reset"
-          color="negative"
-          flat
-          class="q-ml-sm"
-        />
-      </q-card-actions>
-    </q-form>
-  </q-card> -->
 </template>
 
-<style scoped></style>
+<style scoped>
+.bg-image {
+  background-image: linear-gradient(135deg, #39363c 0%, #717171 100%);
+}
+</style>
