@@ -2,8 +2,12 @@
 import { ref } from 'vue';
 import { Credentials } from '../interfaces/index';
 import { useUserAuth } from '../../composables/useUserAuth';
+import {
+  ionLockClosedOutline,
+  ionPersonOutline,
+} from '@quasar/extras/ionicons-v6';
 
-const { singInUser } = useUserAuth();
+const { signInUser } = useUserAuth();
 
 const credentials = ref<Credentials>({
   username: '',
@@ -11,63 +15,143 @@ const credentials = ref<Credentials>({
 });
 
 const onSubmit = async () => {
-  const response = await singInUser({
+  const response = await signInUser({
     username: credentials.value.username,
     password: credentials.value.username,
   });
   console.log('response: ' + response);
 };
+
+const onReset = () => {
+  credentials.value.username = '';
+  credentials.value.password = '';
+};
 </script>
 
 <template>
-  <div class="column q-pa-md row">
-    <q-card square class="shadow-6" style="width: 50vh; height: 450px">
-      <q-form class="q-px-sm q-pt-md" @submit="onSubmit">
-        <q-card-section class="bg-primary">
-          <h4 class="text-center text-white text-h5 q-my-md">My new App</h4>
-        </q-card-section>
-        <q-card-section class="q-mt-md">
-          <q-input
-            ref="username"
-            class="q-mb-md"
-            label="아이디"
-            outlined
-            clearable
-            v-model="credentials.username"
-            type="text"
-            :rules="[(val) => (val && val.length > 0) || '필수 항목입니다.']"
-          >
-            <template v-slot:prepend>
-              <q-icon name="person" />
-            </template>
-          </q-input>
-          <q-input
-            ref="password"
-            label="Contraseña"
-            outlined
-            clearable
-            v-model="credentials.password"
-            type="text"
-            :rules="[(val) => (val && val.length > 0) || '필수 항목입니다.']"
-          >
-            <template v-slot:prepend>
-              <q-icon name="lock" />
-            </template>
-          </q-input>
-        </q-card-section>
-        <q-card-actions class="q-px-md">
-          <q-btn
-            unelevated
-            size="lg"
-            color="secondary"
-            type="submit"
-            class="text-white full-width"
-            label="로그인"
-          />
-        </q-card-actions>
-      </q-form>
-    </q-card>
-  </div>
+  <q-layout>
+    <q-page-container>
+      <q-page class="flex bg-image flex-center">
+        <q-card style="width: 350px">
+          <q-card-section>
+            <q-avatar
+              size="100px"
+              color="primary"
+              text-color="white"
+              class="absolute-center shadow-10"
+            >
+              L
+            </q-avatar>
+          </q-card-section>
+          <q-card-section>
+            <div class="text-center q-pt-lg">
+              <div class="col text-h6 ellipsis">Log in</div>
+            </div>
+          </q-card-section>
+          <q-card-section>
+            <q-form class="q-gutter-md" @submit="onSubmit" @reset="onReset">
+              <q-input
+                autofocus
+                filled
+                v-model="credentials.username"
+                ref="username"
+                label="사번 *"
+                hint="8 또는 9사번 8자리"
+                lazy-rules
+                :rules="[
+                  (val) => (val && val.length > 7) || '필수 항목입니다.',
+                ]"
+              >
+                <template v-slot:prepend>
+                  <q-icon :name="ionPersonOutline" />
+                </template>
+              </q-input>
+
+              <q-input
+                filled
+                v-model="credentials.password"
+                ref="password"
+                label="비밀번호 *"
+                hint="LDAP Password"
+                lazy-rules
+                :rules="[
+                  (val) => (val && val.length > 0) || '필수 항목입니다.',
+                ]"
+              >
+                <template v-slot:prepend>
+                  <q-icon :name="ionLockClosedOutline" />
+                </template>
+              </q-input>
+
+              <q-card-actions>
+                <q-btn
+                  label="로그인"
+                  type="submit"
+                  color="primary"
+                  class="q-py-sm q-px-md"
+                />
+                <q-space />
+                <q-btn
+                  label="초기화"
+                  type="reset"
+                  color="negative"
+                  flat
+                  class="q-ml-sm"
+                />
+              </q-card-actions>
+            </q-form>
+          </q-card-section>
+        </q-card>
+      </q-page>
+    </q-page-container>
+  </q-layout>
+
+  <!-- <q-card bordered flat class="q-pa-md" style="width: 300px">
+    <q-form @submit="onSubmit" @reset="onReset">
+      <q-card-section>
+        <q-input
+          autofocus
+          filled
+          v-model="credentials.username"
+          ref="username"
+          label="사번 *"
+          hint="8 또는 9사번 8자리"
+          lazy-rules
+          :rules="[(val) => (val && val.length > 7) || '필수 항목입니다.']"
+        >
+          <template v-slot:prepend>
+            <q-icon :name="ionPersonOutline" />
+          </template>
+        </q-input>
+      </q-card-section>
+      <q-card-section>
+        <q-input
+          filled
+          v-model="credentials.password"
+          ref="password"
+          label="비밀번호 *"
+          hint="LDAP Password"
+          lazy-rules
+          :rules="[(val) => (val && val.length > 0) || '필수 항목입니다.']"
+        >
+          <template v-slot:prepend>
+            <q-icon :name="ionLockClosedOutline" />
+          </template>
+        </q-input>
+      </q-card-section>
+      <q-card-actions class="q-px-md">
+        <q-btn label="로그인" type="submit" color="primary" />
+        <q-space />
+        <q-btn
+          label="초기화"
+          type="reset"
+          color="negative"
+          flat
+          class="q-ml-sm"
+        />
+      </q-card-actions>
+    </q-form>
+  </q-card> -->
 </template>
 
 <style scoped></style>
