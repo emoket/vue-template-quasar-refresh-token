@@ -25,26 +25,43 @@ export const useUserStore = defineStore('user', () => {
 
   const setCurrentUserData = ({
     username,
-    rol,
+    role,
     accessToken,
     durationTokenInMinutes,
   }: Username) => {
     userData.value = {
       username,
-      rol,
+      role,
     };
     userToken.value = accessToken;
     sessionStorage.setItem('user', AuthorizeStatus.authorize);
     callRefreshToken(durationTokenInMinutes!);
   };
 
-  const userLogin = async (payload: Credentials) => {
+  const refreshToken = async () => {
+    try {
+      console.log('onRefresh ⚡');
+
+      setCurrentUserData({
+        username: 'admin',
+        role: 'admin',
+        accessToken: 'TokenSuperSeguroRefresh',
+        durationTokenInMinutes: 1,
+      } as Username);
+    } catch (error) {
+      sessionStorage.removeItem('user');
+      console.error(error);
+      logoutUser();
+    }
+  };
+
+  const loginUser = async (payload: Credentials) => {
     console.log('payload = ' + JSON.stringify(payload));
     try {
       loadingUser.value = true;
       await setCurrentUserData({
         username: 'admin',
-        rol: 'admin',
+        role: 'admin',
         accessToken: 'Token JWT inicial',
         durationTokenInMinutes: 1,
       } as Username);
@@ -56,22 +73,6 @@ export const useUserStore = defineStore('user', () => {
     }
   };
 
-  const refreshToken = async () => {
-    try {
-      console.log('onRefresh ⚡');
-      setCurrentUserData({
-        username: 'admin',
-        rol: 'admin',
-        accessToken: 'TokenSuperSeguroRefresh',
-        durationTokenInMinutes: 1,
-      } as Username);
-    } catch (error) {
-      sessionStorage.removeItem('user');
-      console.error(error);
-      logoutUser();
-    }
-  };
-
   const logoutUser = () => {
     userData.value = null;
     userToken.value = undefined;
@@ -79,11 +80,12 @@ export const useUserStore = defineStore('user', () => {
     clearRefreshToken();
     router.push({ name: 'login' });
   };
+
   return {
     userData,
     userToken,
     loadingUser,
-    userLogin,
+    loginUser,
     logoutUser,
     refreshToken,
   };

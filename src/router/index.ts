@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { routesApp } from './routesApp';
+import { routes } from './routes';
 import { AuthorizeStatus } from '../auth/interfaces';
 import { useUserStore } from '../store/useUserStore';
 import { IsDevMode, VITE_PATH_BUILD } from '../config/environment';
@@ -10,13 +10,15 @@ const router = createRouter({
   history: createWebHistory(buildPath),
   linkActiveClass: 'active',
   linkExactActiveClass: 'exact-active',
-  routes: routesApp,
+  routes: routes,
 });
 
 router.beforeEach(async (to, from, next) => {
   // 사용자 상태
   const isAuthenticated =
     sessionStorage.getItem('user') === AuthorizeStatus.authorize;
+  console.log('isAuthenticated', isAuthenticated);
+
   // 해당 경로에 대한 인증이 필요한지 여부
   const requiredAuth = to.meta.requiresAuth;
   // 토큰을 얻기 위한 User store

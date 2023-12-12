@@ -10,12 +10,14 @@ export const requiereAuthGuard = async (
   const useStore = useUserStore();
   const userStatus = localStorage.getItem('user') === AuthorizeStatus.authorize;
   useStore.loadingUser = true;
+
   // 만약 메모리에 토큰이 이미 존재한다면
   if (useStore.userToken !== undefined && userStatus) {
     console.log('토큰 새로 고침 요청이 수행되지 않습니다', useStore.userData);
     useStore.loadingUser = false;
     return next();
   }
+
   // 토큰이 갱신되고 소멸된 경우
   if (useStore.userToken === undefined && userStatus) {
     console.log('onRefreshToken ⚡', { userStatus });
@@ -32,8 +34,9 @@ export const requiereAuthGuard = async (
     useStore.logoutUser();
     return next({ name: 'login' });
   }
+
   console.log(
-    '어떤 유효성 검사도 통과하지 못했습니다. 유효한 로컬 저장소가 없습니다.',
+    '어떠한 유효성 검사도 통과하지 못했습니다. 유효한 로컬 저장소가 없습니다.',
   );
   useStore.logoutUser();
   useStore.loadingUser = false;
