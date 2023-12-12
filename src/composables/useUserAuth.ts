@@ -6,19 +6,19 @@ export const useUserAuth = () => {
   const userStore = useUserStore();
   const { userData, loadingUser } = storeToRefs(userStore);
 
-  const singInUser = async (payload: Credentials) => {
-    const response = await userStore.userLogin(payload);
+  const signInUser = async (payload: Credentials) => {
+    const response = await userStore.loginUser(payload);
     return response;
   };
 
-  const logoutUser = () => {
+  const signOutUser = () => {
     userStore.logoutUser();
   };
 
   return {
     userData,
     loadingUser,
-    singInUser,
-    logoutUser,
+    signInUser,
+    signOutUser,
   };
 };
