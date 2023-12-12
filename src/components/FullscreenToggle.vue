@@ -8,7 +8,7 @@ import {
 } from '@quasar/extras/ionicons-v6';
 
 const $q = useQuasar();
-const isFullscreen = JSON.parse(localStorage.getItem('fullscreen') || false);
+const isFullscreen = JSON.parse(localStorage.getItem('fullscreen') || 'false');
 console.log('isFullscreen = ' + isFullscreen);
 
 // 컴포넌트 마운트 시 Local storage의 'fullscreen' 값을 확인하여 true 면 fullscreen 모드로 바로 시작!
@@ -43,11 +43,7 @@ const toggleFullScreen = () => $q.fullscreen.toggle();
     stretch
     flat
     color="white"
-    :icon="
-      $q.fullscreen.isActive && isFullscreen
-        ? ionContractOutline
-        : ionExpandOutline
-    "
+    :icon="$q.fullscreen.isActive ? ionContractOutline : ionExpandOutline"
     @click="toggleFullScreen"
     v-if="$q.screen.gt.sm"
   >
