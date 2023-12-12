@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import DarkToggle from '../../theme/DarkToggle.vue';
+import Footer from '../../components/Footer.vue';
 </script>
 
 <template>
   <q-layout view="hHh lpR fFf">
-    <q-header reveal class="text-white bg-primary">
+    <q-header borderd class="bg-primary text-white">
       <q-toolbar>
         <q-toolbar-title>
           <!-- <q-avatar>
@@ -17,10 +18,15 @@ import DarkToggle from '../../theme/DarkToggle.vue';
         <DarkToggle />
       </q-toolbar>
     </q-header>
+
     <q-page-container>
-      <q-page class="items-center justify-center window-width row">
+      <q-page
+        class="items-center justify-center window-width window-height row"
+      >
         <router-view />
       </q-page>
     </q-page-container>
+
+    <Footer />
   </q-layout>
 </template>

@@ -22,5 +22,11 @@ export default {
       meta: { requiresAuth: true },
       component: () => import('../Views/Chart.vue'),
     },
+    {
+      path: '/dhtmlx-demo',
+      name: 'dhx',
+      meta: { requiresAuth: true },
+      component: () => import('../Views/DhtmlxDemo.vue'),
+    },
   ],
 };

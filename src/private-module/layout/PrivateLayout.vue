@@ -2,128 +2,97 @@
 import { ref } from 'vue';
 import { useUserAuth } from '../../composables/useUserAuth';
 import DarkToggle from '../../theme/DarkToggle.vue';
+import FullscreenToogle from '../../components/FullscreenToggle.vue';
+import LogoutIconButton from '../../components/LogoutIconButton.vue';
+import {
+  ionBarChartOutline,
+  ionPieChartOutline,
+  ionMenu,
+  ionBeakerOutline,
+} from '@quasar/extras/ionicons-v6';
+import Footer from '../../components/Footer.vue';
 
-const { userData, loadingUser, logoutUser } = useUserAuth();
+const { loadingUser } = useUserAuth();
 
-const leftDrawerOpen = ref(false);
-const toggleLeftDrawer = () => {
-  leftDrawerOpen.value = !leftDrawerOpen.value;
-};
+const drawer = ref(false);
+const miniState = ref(true);
 </script>
 
 <template>
   <div v-if="loadingUser">Loading....</div>
-  <q-layout view="lHh Lpr lFf" v-else>
-    <q-header elevated>
-      <q-toolbar>
+  <q-layout v-else view="hHh lpR fFf" reveal>
+    <q-header bordered :class="$q.dark.isActive ? 'bg-dark' : 'bg-primary'">
+      <q-toolbar class="q-px-none">
+        <q-btn stretch flat :icon="ionMenu" @click="drawer = !drawer" />
+
+        <q-separator vertical inset />
+
+        <!-- <q-toolbar-title>CUSTOM UI</q-toolbar-title> -->
         <q-btn
+          stretch
           flat
-          dense
-          round
-          @click="toggleLeftDrawer"
-          aria-label="Menu"
-          icon="menu"
+          label="CUSTOM UI"
+          class="text-h6"
+          :to="{ name: 'home' }"
         />
-        <q-toolbar-title> Custom UI </q-toolbar-title>
+
+        <q-space />
+
+        <FullscreenToogle />
+
         <DarkToggle />
+
+        <q-separator vertical inset />
+
+        <LogoutIconButton />
       </q-toolbar>
     </q-header>
 
     <q-drawer
-      v-model="leftDrawerOpen"
+      v-model="drawer"
       show-if-above
-      bordered
+      :mini="miniState"
+      @mouseover="miniState = false"
+      @mouseout="miniState = true"
+      mini-to-overlay
       :width="200"
-      :breakpoint="400"
+      :breakpoint="500"
+      bordered
+      :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'"
     >
-      <q-scroll-area
-        style="
-          height: calc(100% - 150px);
-          margin-top: 150px;
-          border-right: 1px solid #ddd;
-        "
-      >
+      <q-scroll-area class="fit" :horizontal-thumb-style="{ opacity: '0' }">
+        <!-- Menu List -->
         <q-list padding>
-          <q-item clickable v-ripple tag="a" :to="{ name: 'home' }">
+          <q-item clickable v-ripple :to="{ name: 'dashboard' }">
             <q-item-section avatar>
-              <q-icon name="inbox" />
+              <q-icon :name="ionBarChartOutline" />
             </q-item-section>
-            <q-item-section> Home </q-item-section>
+            <q-item-section> Dashboard </q-item-section>
           </q-item>
-        </q-list>
 
-        <q-list padding>
-          <q-expansion-item
-            group="somegroup"
-            icon="explore"
-            label="Main-menu"
-            default-opened
-            header-class="text-primary"
-          >
-            <q-item clickable v-ripple tag="a" :to="{ name: 'politicas' }">
-              <q-item-section avatar>
-                <q-icon name="inbox" />
-              </q-item-section>
-              <q-item-section> Sub-menu </q-item-section>
-            </q-item>
-          </q-expansion-item>
-
-          <q-separator />
-
-          <q-expansion-item
-            group="somegroup"
-            icon="perm_identity"
-            label="Second"
-            header-class="text-teal"
-          >
-            <q-card>
-              <q-card-section>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Quidem, eius reprehenderit eos corrupti commodi magni quaerat ex
-                numquam, dolorum officiis modi facere maiores architecto
-                suscipit iste eveniet doloribus ullam aliquid.
-              </q-card-section>
-            </q-card>
-          </q-expansion-item>
-
-          <q-separator />
-        </q-list>
-
-        <q-list padding>
-          <q-item
-            clickable
-            v-ripple
-            tag="a"
-            @click="logoutUser"
-            class="text-white bg-red"
-          >
+          <q-item clickable v-ripple :to="{ name: 'chart' }">
             <q-item-section avatar>
-              <q-icon name="logout" />
+              <q-icon :name="ionPieChartOutline" />
             </q-item-section>
-            <q-item-section> 로그아웃 </q-item-section>
+            <q-item-section> Chart </q-item-section>
+          </q-item>
+
+          <q-separator />
+
+          <q-item clickable v-ripple :to="{ name: 'dhx' }">
+            <q-item-section avatar>
+              <q-icon :name="ionBeakerOutline" />
+            </q-item-section>
+            <q-item-section> DHTMLX DEMO </q-item-section>
           </q-item>
         </q-list>
       </q-scroll-area>
-
-      <q-img
-        class="absolute-top"
-        src="https://cdn.quasar.dev/img/material.png"
-        style="height: 150px"
-      >
-        <div class="bg-transparent absolute-bottom">
-          <q-avatar size="56px" class="q-mb-sm">
-            <img src="https://i.pravatar.cc/150?img=2" />
-          </q-avatar>
-          <div class="text-weight-bold">
-            {{ userData?.username }}
-          </div>
-          <div>{{ userData?.rol }}</div>
-        </div>
-      </q-img>
     </q-drawer>
 
     <q-page-container v-if="!loadingUser">
       <router-view />
     </q-page-container>
+
+    <Footer />
   </q-layout>
 </template>
