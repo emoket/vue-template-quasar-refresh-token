@@ -9,6 +9,7 @@ const isDarkMode = JSON.parse(localStorage.getItem('darkMode') || '{}');
 
 // set status
 $q.dark.set(isDarkMode === '' ? 'auto' : isDarkMode); // or false or "auto"
+
 watch(
   () => $q.dark.isActive,
   (val) => {
@@ -16,18 +17,15 @@ watch(
     localStorage.setItem('darkMode', JSON.stringify(val));
   },
 );
-const preferenceUser = () => {
-  console.log('entra');
-  $q.dark.toggle();
-};
+
+const toggleTheme = () => $q.dark.toggle();
 </script>
 
 <template>
   <q-btn
+    stretch
     flat
-    round
-    color="white"
-    :icon="$q.dark.isActive ? ionSunnyOutline : ionMoonOutline"
-    @click="preferenceUser"
+    :icon="$q.dark.isActive ? ionMoonOutline : ionSunnyOutline"
+    @click="toggleTheme"
   />
 </template>
