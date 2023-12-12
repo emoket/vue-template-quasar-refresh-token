@@ -5,16 +5,22 @@ export default {
   redirect: { path: '' },
   children: [
     {
-      path: '',
+      path: '/',
       name: 'home',
       meta: { requiresAuth: true },
       component: () => import('../Views/Home.vue'),
     },
     {
-      path: 'politicas',
-      name: 'politicas',
+      path: '/dashboard',
+      name: 'dashboard',
       meta: { requiresAuth: true },
-      component: () => import('../Views/Politicas.vue'),
+      component: () => import('../Views/Dashboard.vue'),
+    },
+    {
+      path: '/chart',
+      name: 'chart',
+      meta: { requiresAuth: true },
+      component: () => import('../Views/Chart.vue'),
     },
   ],
 };
