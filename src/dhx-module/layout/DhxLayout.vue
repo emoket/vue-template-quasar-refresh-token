@@ -1,50 +1,30 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useUserAuth } from '../../composables/useUserAuth';
 import DarkToggle from '../../theme/DarkToggle.vue';
-import FullscreenToogle from '../../components/FullscreenToggle.vue';
-import LogoutIconButton from '../../components/LogoutIconButton.vue';
-import { ionMenu } from '@quasar/extras/ionicons-v6';
 import Footer from '../../components/Footer.vue';
 import EssentialLink from '../../components/EssentialLink.vue';
-
-const { loadingUser } = useUserAuth();
+import { ionMenu, ionHomeOutline } from '@quasar/extras/ionicons-v6';
+import { dhxMenus } from '../../menus';
 
 const drawer = ref(false);
 const miniState = ref(true);
 </script>
 
-<script lang="ts">
-import { privateMenus } from '../../menus';
-</script>
-
 <template>
-  <div v-if="loadingUser">Loading....</div>
-  <q-layout v-else view="hHh lpR fFf" reveal>
-    <q-header bordered :class="$q.dark.isActive ? 'bg-dark' : 'bg-primary'">
+  <q-layout view="hHh lpR fFf" reveal>
+    <q-header bordered :class="$q.dark.isActive ? 'bg-dark' : 'bg-secondary'">
       <q-toolbar class="q-px-none">
         <q-btn stretch flat :icon="ionMenu" @click="drawer = !drawer" />
 
         <q-separator vertical inset />
 
-        <!-- <q-toolbar-title>CUSTOM UI</q-toolbar-title> -->
-        <q-btn
-          stretch
-          flat
-          label="CUSTOM UI"
-          class="text-h6"
-          :to="{ name: 'home' }"
-        />
+        <q-btn stretch flat :icon="ionHomeOutline" :to="{ name: 'home' }" />
+
+        <q-toolbar-title>DHTMLX DEMO</q-toolbar-title>
 
         <q-space />
 
-        <FullscreenToogle />
-
         <DarkToggle />
-
-        <q-separator vertical inset />
-
-        <LogoutIconButton />
       </q-toolbar>
     </q-header>
 
@@ -55,7 +35,7 @@ import { privateMenus } from '../../menus';
       @mouseover="miniState = false"
       @mouseout="miniState = true"
       mini-to-overlay
-      :width="200"
+      :width="250"
       :breakpoint="500"
       bordered
       :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'"
@@ -64,7 +44,7 @@ import { privateMenus } from '../../menus';
         <q-list padding>
           <!-- Menu List -->
           <EssentialLink
-            v-for="link in privateMenus"
+            v-for="link in dhxMenus"
             :key="link.title"
             v-bind="link"
           />
@@ -72,11 +52,10 @@ import { privateMenus } from '../../menus';
       </q-scroll-area>
     </q-drawer>
 
-    <q-page-container v-if="!loadingUser">
+    <q-page-container>
       <router-view />
     </q-page-container>
 
     <Footer />
   </q-layout>
 </template>
-../../menus

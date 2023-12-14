@@ -1,0 +1,37 @@
+<script setup lang="ts">
+import { ionHelpOutline } from '@quasar/extras/ionicons-v6';
+
+defineProps({
+  title: {
+    type: String,
+    required: true,
+  },
+  icon: {
+    type: String,
+    required: true,
+    default: ionHelpOutline,
+  },
+  to: {
+    type: String,
+    default: '#',
+  },
+  isSeperator: {
+    type: Boolean,
+    default: false,
+  },
+});
+</script>
+
+<template>
+  <q-item clickable v-ripple tag="a" :to="to">
+    <q-item-section v-if="icon" avatar>
+      <q-icon :name="icon" />
+    </q-item-section>
+
+    <q-item-section>
+      <q-item-label>{{ title }}</q-item-label>
+    </q-item-section>
+  </q-item>
+
+  <q-separator v-if="isSeperator" />
+</template>
