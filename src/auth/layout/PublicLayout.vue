@@ -20,9 +20,7 @@ import Footer from '../../components/Footer.vue';
     </q-header>
 
     <q-page-container>
-      <q-page
-        class="items-center justify-center window-width window-height row"
-      >
+      <q-page class="items-center justify-center row">
         <router-view />
       </q-page>
     </q-page-container>
