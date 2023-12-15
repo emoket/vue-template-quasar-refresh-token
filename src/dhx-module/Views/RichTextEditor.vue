@@ -14,7 +14,6 @@ export default {
       'https://cdn.dhtmlx.com/richtext/pro/edge/richtext.js',
       'https://cdn.dhtmlx.com/richtext/pro/edge/richtext.css',
     ]).then(() => {
-      // eslint-disable-next-line no-undef
       this.richtext = new dhx.Richtext(this.$refs.richtext);
       this.richtext.setValue(this.initialContent, 'markdown');
     });
@@ -57,7 +56,7 @@ export default {
       </button>
     </section>
     <div class="dhx_container">
-      <div class="dhx_sample-container__widget setting" ref="richtext"></div>
+      <div ref="richtext" class="dhx_sample-container__widget setting"></div>
       <textarea
         readonly
         class="dhx_sample-container__textarea"
