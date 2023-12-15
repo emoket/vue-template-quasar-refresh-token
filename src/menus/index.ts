@@ -1,26 +1,33 @@
 import {
-  ionBarChartOutline,
-  ionBeakerOutline,
-  ionPieChartOutline,
-  ionCalendarOutline,
-  ionPodiumOutline,
-} from '@quasar/extras/ionicons-v6';
+  symRoundedTable,
+  symRoundedNewspaper,
+  symRoundedCalendarMonth,
+  symRoundedClearAll,
+  symRoundedDashboard,
+  symRoundedMonitoring,
+  symRoundedScience,
+  symRoundedToday,
+  symRoundedFormatAlignJustify,
+  symRoundedChecklist,
+  symRoundedFamilyHistory,
+  symRoundedHardDrive,
+} from '@quasar/extras/material-symbols-rounded';
 
 const privateMenus = [
   {
     title: 'Dashboard',
-    icon: ionBarChartOutline,
+    icon: symRoundedDashboard,
     to: '/dashboard',
   },
   {
     title: 'Chart',
-    icon: ionPieChartOutline,
+    icon: symRoundedMonitoring,
     to: '/chart',
     isSeperator: true,
   },
   {
     title: 'DHTMLX DEMO',
-    icon: ionBeakerOutline,
+    icon: symRoundedScience,
     to: '/dhx/gantt',
   },
 ];
@@ -28,18 +35,48 @@ const privateMenus = [
 const dhxMenus = [
   {
     title: '@dhx/trial-gantt',
-    icon: ionBarChartOutline,
+    icon: symRoundedClearAll,
     to: '/dhx/gantt',
   },
   {
-    title: '@dhx/trial-kanban',
-    icon: ionPodiumOutline,
-    to: '/dhx/kanban',
+    title: '@dhx/trial-eventcalendar (X)',
+    icon: symRoundedToday,
+    to: '/dhx/event-calendar',
   },
   {
-    title: '@dhx/trial-scheduler',
-    icon: ionCalendarOutline,
+    title: 'dhtmlx-scheduler',
+    icon: symRoundedCalendarMonth,
     to: '/dhx/scheduler',
+  },
+  {
+    title: 'cdn-richtext',
+    icon: symRoundedNewspaper,
+    to: '/dhx/richtexteditor',
+  },
+  {
+    title: 'dhx-suite-grid',
+    icon: symRoundedFormatAlignJustify,
+    to: '/dhx/suite',
+  },
+  {
+    title: '@dhx/trial-spreadsheet',
+    icon: symRoundedTable,
+    to: '/dhx/spreadsheet',
+  },
+  {
+    title: '@dhx/trial-todolist (X)',
+    icon: symRoundedChecklist,
+    to: '/dhx/todolist',
+  },
+  {
+    title: 'cdn-diagram',
+    icon: symRoundedFamilyHistory,
+    to: '/dhx/diagram',
+  },
+  {
+    title: 'cdn-vault',
+    icon: symRoundedHardDrive,
+    to: '/dhx/vault',
   },
 ];
 
