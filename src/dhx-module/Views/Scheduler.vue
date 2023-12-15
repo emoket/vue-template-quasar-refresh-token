@@ -1,17 +1,11 @@
 <script>
 import { scheduler } from 'dhtmlx-scheduler';
+import 'dhtmlx-scheduler/codebase/dhtmlxscheduler_material.css';
+import { events } from './scheduler-data';
 
 export default {
-  props: {
-    events: {
-      type: Array,
-      default() {
-        return [];
-      },
-    },
-  },
   methods: {
-    $_initDataProcessor: function () {
+    $_initDataProcessor() {
       if (!scheduler.$_dataProcessorInitialized) {
         scheduler.createDataProcessor((entity, action, data, id) => {
           this.$emit(`${entity}-updated`, id, action, data);
@@ -20,7 +14,7 @@ export default {
       }
     },
   },
-  mounted: function () {
+  mounted() {
     scheduler.skin = 'material';
     scheduler.config.header = [
       'day',
@@ -35,10 +29,10 @@ export default {
 
     scheduler.init(
       this.$refs.SchedulerComponent,
-      new Date(2023, 12, 15),
-      'week',
+      new Date(2023, 11, 15),
+      'month',
     );
-    scheduler.parse(this.$props.events);
+    scheduler.parse(events);
   },
 };
 </script>
@@ -51,5 +45,5 @@ export default {
 </template>
 
 <style>
-@import 'dhtmlx-scheduler/codebase/dhtmlxscheduler_material.css';
+/* @import 'dhtmlx-scheduler/codebase/dhtmlxscheduler_material.css'; */
 </style>
