@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { useQuasar } from 'quasar';
 import { watch } from 'vue';
-
-import { ionSunnyOutline, ionMoonOutline } from '@quasar/extras/ionicons-v6';
+import {
+  symRoundedDarkMode,
+  symRoundedLightMode,
+} from '@quasar/extras/material-symbols-rounded';
 
 const $q = useQuasar();
 const isDarkMode = JSON.parse(localStorage.getItem('darkMode') || '{}');
@@ -25,7 +27,7 @@ const toggleTheme = () => $q.dark.toggle();
   <q-btn
     stretch
     flat
-    :icon="$q.dark.isActive ? ionMoonOutline : ionSunnyOutline"
+    :icon="$q.dark.isActive ? symRoundedDarkMode : symRoundedLightMode"
     @click="toggleTheme"
   />
 </template>

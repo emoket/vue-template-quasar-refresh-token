@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ionHelpOutline } from '@quasar/extras/ionicons-v6';
-
 defineProps({
   title: {
     type: String,
@@ -9,7 +7,6 @@ defineProps({
   icon: {
     type: String,
     required: true,
-    default: ionHelpOutline,
   },
   to: {
     type: String,

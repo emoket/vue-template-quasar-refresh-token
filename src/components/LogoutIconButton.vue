@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { symRoundedLogout } from '@quasar/extras/material-symbols-rounded';
 import { useUserAuth } from '../composables/useUserAuth';
-import { ionLogOutOutline } from '@quasar/extras/ionicons-v6';
 
 const { signOutUser } = useUserAuth();
 </script>
@@ -10,7 +10,7 @@ const { signOutUser } = useUserAuth();
     stretch
     flat
     color="white"
-    :icon="ionLogOutOutline"
+    :icon="symRoundedLogout"
     @click="signOutUser"
   />
 </template>

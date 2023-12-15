@@ -3,7 +3,8 @@ import { ref } from 'vue';
 import DarkToggle from '../../theme/DarkToggle.vue';
 import Footer from '../../components/Footer.vue';
 import EssentialLink from '../../components/EssentialLink.vue';
-import { ionMenu, ionHomeOutline } from '@quasar/extras/ionicons-v6';
+import { roundMenu, roundHome } from '@quasar/extras/material-icons-round';
+
 import { dhxMenus } from '../../menus';
 
 const drawer = ref(false);
@@ -14,13 +15,13 @@ const miniState = ref(true);
   <q-layout view="hHh lpR fFf" reveal>
     <q-header bordered :class="$q.dark.isActive ? 'bg-dark' : 'bg-secondary'">
       <q-toolbar class="q-px-none">
-        <q-btn stretch flat :icon="ionMenu" @click="drawer = !drawer" />
+        <q-btn stretch flat :icon="roundMenu" @click="drawer = !drawer" />
 
         <q-separator vertical inset />
 
-        <q-btn stretch flat :icon="ionHomeOutline" :to="{ name: 'home' }" />
+        <q-btn stretch flat :icon="roundHome" :to="{ name: 'home' }" />
 
-        <q-toolbar-title>DHTMLX DEMO</q-toolbar-title>
+        <q-toolbar-title>DHTMLX Layout</q-toolbar-title>
 
         <q-space />
 

@@ -3,9 +3,9 @@ import { ref } from 'vue';
 import { Credentials } from '../interfaces/index';
 import { useUserAuth } from '../../composables/useUserAuth';
 import {
-  ionLockClosedOutline,
-  ionPersonOutline,
-} from '@quasar/extras/ionicons-v6';
+  symRoundedBadge,
+  symRoundedPassword,
+} from '@quasar/extras/material-symbols-rounded';
 
 const { signInUser } = useUserAuth();
 
@@ -59,7 +59,7 @@ const onReset = () => {
             :rules="[(val) => (val && val.length > 7) || '필수 항목입니다.']"
           >
             <template v-slot:prepend>
-              <q-icon :name="ionPersonOutline" />
+              <q-icon :name="symRoundedBadge" />
             </template>
           </q-input>
 
@@ -73,7 +73,7 @@ const onReset = () => {
             :rules="[(val) => (val && val.length > 0) || '필수 항목입니다.']"
           >
             <template v-slot:prepend>
-              <q-icon :name="ionLockClosedOutline" />
+              <q-icon :name="symRoundedPassword" />
             </template>
           </q-input>
 

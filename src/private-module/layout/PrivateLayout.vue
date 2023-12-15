@@ -4,7 +4,6 @@ import { useUserAuth } from '../../composables/useUserAuth';
 import DarkToggle from '../../theme/DarkToggle.vue';
 import FullscreenToogle from '../../components/FullscreenToggle.vue';
 import LogoutIconButton from '../../components/LogoutIconButton.vue';
-import { ionMenu } from '@quasar/extras/ionicons-v6';
 import Footer from '../../components/Footer.vue';
 import EssentialLink from '../../components/EssentialLink.vue';
 
@@ -16,6 +15,7 @@ const miniState = ref(true);
 
 <script lang="ts">
 import { privateMenus } from '../../menus';
+import { symRoundedMenu } from '@quasar/extras/material-symbols-rounded';
 </script>
 
 <template>
@@ -23,7 +23,7 @@ import { privateMenus } from '../../menus';
   <q-layout v-else view="hHh lpR fFf" reveal>
     <q-header bordered :class="$q.dark.isActive ? 'bg-dark' : 'bg-primary'">
       <q-toolbar class="q-px-none">
-        <q-btn stretch flat :icon="ionMenu" @click="drawer = !drawer" />
+        <q-btn stretch flat :icon="symRoundedMenu" @click="drawer = !drawer" />
 
         <q-separator vertical inset />
 

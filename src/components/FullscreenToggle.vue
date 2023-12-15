@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { useQuasar } from 'quasar';
 import { watch } from 'vue';
-
 import {
-  ionExpandOutline,
-  ionContractOutline,
-} from '@quasar/extras/ionicons-v6';
+  symRoundedFullscreen,
+  symRoundedFullscreenExit,
+} from '@quasar/extras/material-symbols-rounded';
 
 const $q = useQuasar();
 const isFullscreen = JSON.parse(localStorage.getItem('fullscreen') || 'false');
@@ -43,7 +42,9 @@ const toggleFullScreen = () => $q.fullscreen.toggle();
     stretch
     flat
     color="white"
-    :icon="$q.fullscreen.isActive ? ionContractOutline : ionExpandOutline"
+    :icon="
+      $q.fullscreen.isActive ? symRoundedFullscreenExit : symRoundedFullscreen
+    "
     @click="toggleFullScreen"
     v-if="$q.screen.gt.sm"
   >
