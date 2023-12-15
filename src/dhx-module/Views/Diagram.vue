@@ -1,11 +1,3 @@
-<template>
-  <q-page style="width: 100%; height: 100vh">
-    <div class="dhx_sample-container">
-      <div class="dhx_sample-widget" ref="editor"></div>
-    </div>
-  </q-page>
-</template>
-
 <script>
 import fromCDN from 'from-cdn';
 // import data
@@ -33,3 +25,11 @@ export default {
   },
 };
 </script>
+
+<template>
+  <q-page style="width: 100%; height: calc(100vh - 100px)">
+    <div class="dhx_sample-container">
+      <div class="dhx_sample-widget" ref="editor"></div>
+    </div>
+  </q-page>
+</template>
