@@ -36,7 +36,7 @@ const miniState = ref(true);
       @mouseover="miniState = false"
       @mouseout="miniState = true"
       mini-to-overlay
-      :width="250"
+      :width="280"
       :breakpoint="500"
       bordered
       :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'"
