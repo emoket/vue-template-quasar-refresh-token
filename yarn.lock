@@ -12,10 +12,15 @@
   resolved "https://registry.npmjs.org/@babel/parser/-/parser-7.20.15.tgz"
   integrity sha512-DI4a1oZuf8wC+oAJA9RW6ga3Zbe8RZFt7kD9i4qAspz3I/yHet1VvC3DiSy/fsUvv5pvJuNPh0LPOdCcqinDPg==
 
-"@dhtmlx/trial-vue-gantt@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.npmjs.org/@dhtmlx/trial-vue-gantt/-/trial-vue-gantt-1.1.2.tgz"
-  integrity sha512-UVHaMZxSSnGM+Bmxv2T6uEs/jmLmaDBUup8BbFtpGV2H+k2j/VGIZ+YVLAsiXtrK0etikjv536DH7eKtfUFX9Q==
+"@dhx/trial-chart@^8.3.3":
+  version "8.3.3"
+  resolved "https://npm.dhtmlx.com/@dhx%2ftrial-chart/-/trial-chart-8.3.3.tgz#3f0f16dfb4287d565f8b5151608b28a998c3b19a"
+  integrity sha512-f2yQGUUN90QTsK3r65KMSFkgeUyDdb7tmlN0jogQV+5q240QlzcsGYqtwB8NuE+iixf8WYL9O37ALlhII/cCHw==
+
+"@dhx/trial-eventcalendar@^2.1.5":
+  version "2.1.5"
+  resolved "https://npm.dhtmlx.com/@dhx%2ftrial-eventcalendar/-/trial-eventcalendar-2.1.5.tgz#27c54ee8d9cd58943dfcecf7f5a16c55bdecdf5e"
+  integrity sha512-S6rX9xWb111eQmSIByps8JPmMFzJbPZAivmOMTQ1/k/9mhgmRPqGVCif0CD6kcZZ2roxEkqb3nySuQra5FH/7A==
 
 "@dhx/trial-gantt@^8.0.3":
   version "8.0.3"
@@ -24,8 +29,23 @@
 
 "@dhx/trial-kanban@^1.5.8":
   version "1.5.8"
-  resolved "https://npm.dhtmlx.com/@dhx%2ftrial-kanban/-/trial-kanban-1.5.8.tgz"
+  resolved "https://npm.dhtmlx.com/@dhx%2ftrial-kanban/-/trial-kanban-1.5.8.tgz#f81805afcfda99ae87cb2b8abeb42f36685337f4"
   integrity sha512-CoGxRH2YWKvsD1oiPVFon/eMEAxom6PLBHntc1lHvPyy3wTyxhlGM7NK623WBqlPqDVaYtHk4GLEuoJSgRXmmA==
+
+"@dhx/trial-scheduler@^6.0.5":
+  version "6.0.5"
+  resolved "https://npm.dhtmlx.com/@dhx%2ftrial-scheduler/-/trial-scheduler-6.0.5.tgz#2fe0189c5b636debe9e87effca979fff1dc82f60"
+  integrity sha512-246RRLOB0/Ci1fAV2TcSEq2H9pJ879NBS7Kke35SCKAOgk6RDeFz5cNQCvWhkgOpbaDUXpngh4wAsi7dJjwI+w==
+
+"@dhx/trial-spreadsheet@^5.1.1":
+  version "5.1.1"
+  resolved "https://npm.dhtmlx.com/@dhx%2ftrial-spreadsheet/-/trial-spreadsheet-5.1.1.tgz#8776109b33a965ff9b988be84e10f1617b19abff"
+  integrity sha512-1o6vBU+/zut8tFQVu1Vv30pUtr1kuc89pZjN9HhXCxEeF6CdUmLi2vXT5CxcGzUKxDSkGpjYdTj9Cv58WRzfsw==
+
+"@dhx/trial-todolist@^1.2.5":
+  version "1.2.5"
+  resolved "https://npm.dhtmlx.com/@dhx%2ftrial-todolist/-/trial-todolist-1.2.5.tgz#24fd5eb893177b38df6bfb323ffdc7798b5131a7"
+  integrity sha512-mYx8FU81VpVOUiwXDumS0Itqv7aGRH06WuU1eBYpo/QPJ04Dg8436+TepS0S9ZSMw+w1YdVTkH7kghC7pXdnxA==
 
 "@esbuild/android-arm64@0.16.17":
   version "0.16.17"
@@ -730,6 +750,16 @@ delayed-stream@~1.0.0:
   resolved "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz"
   integrity sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==
 
+dhtmlx-scheduler@^6.0.5:
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/dhtmlx-scheduler/-/dhtmlx-scheduler-6.0.5.tgz#51f48750920320f82ceff8a355a9d7bb0708a10b"
+  integrity sha512-tYIOE4qTFeyRJ2C2hPYC+l1RUg1vvM2zIxTfDavnkvSz3bl7sfsEjyVYYdYtaPwvM0i86sbHmxDTB6SbL9o0KA==
+
+dhx-suite@^8.3.3:
+  version "8.3.3"
+  resolved "https://registry.yarnpkg.com/dhx-suite/-/dhx-suite-8.3.3.tgz#782d9c55ead84509101c2c7fb54aeab882d54ccf"
+  integrity sha512-gsJm4NBAq7NxhN7o1x9upLcZuh9ixHawyzqu+JPjk5MleADCjQiSPsdlKUPmG9fJME4QRGo9vdmzH1Bw2IgTtw==
+
 dir-glob@^3.0.1:
   version "3.0.1"
   resolved "https://registry.npmjs.org/dir-glob/-/dir-glob-3.0.1.tgz"
@@ -995,6 +1025,11 @@ fraction.js@^4.3.6:
   version "4.3.7"
   resolved "https://registry.npmjs.org/fraction.js/-/fraction.js-4.3.7.tgz"
   integrity sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==
+
+from-cdn@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/from-cdn/-/from-cdn-1.0.1.tgz#ba5ec9ceba9c83c2d50e9249ddde50d6ca247afe"
+  integrity sha512-D1zc8sdfR7bRawGaYRNZduRR/fTjB15X0OCulJOKp7PqhgHUkGeTsmNbvIONCq0sMEV2BMkv6vjDY92oslAfRA==
 
 fs.realpath@^1.0.0:
   version "1.0.0"
