@@ -11,6 +11,7 @@ import {
   symRoundedChecklist,
   symRoundedFamilyHistory,
   symRoundedHardDrive,
+  symRoundedPivotTableChart,
 } from '@quasar/extras/material-symbols-rounded';
 
 const privateMenus = [
@@ -32,6 +33,18 @@ const privateMenus = [
   },
 ];
 
+// https://dhtmlx.com/docs/products/
+// 1. Gantt (o)
+// 2. Scheduler (o)
+// 3. Suite - (esp. Grid) (o)
+// 4. Diagram (o)
+// 5. Spreadsheet (o)
+// 6. Kanban (x)
+// 7. To Do List (x)
+// 8. Event Calendar (x)
+// 9. Rich Text Editor (o)
+// 10. Vault (o)
+// 11. Pivot (o)
 const dhxMenus = [
   {
     title: '@dhx/trial-gantt',
@@ -77,6 +90,11 @@ const dhxMenus = [
     title: 'cdn-vault',
     icon: symRoundedHardDrive,
     to: '/dhx/vault',
+  },
+  {
+    title: 'cdn-pivot',
+    icon: symRoundedPivotTableChart,
+    to: '/dhx/pivot',
   },
 ];
 
