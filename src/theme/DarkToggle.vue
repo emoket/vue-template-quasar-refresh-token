@@ -7,7 +7,7 @@ import {
 } from '@quasar/extras/material-symbols-rounded';
 
 const $q = useQuasar();
-const isDarkMode = JSON.parse(localStorage.getItem('darkMode') || '{}');
+const isDarkMode = JSON.parse(localStorage.getItem('dark-mode') || '{}');
 
 // set status
 $q.dark.set(isDarkMode === '' ? 'auto' : isDarkMode); // or false or "auto"
@@ -16,7 +16,7 @@ watch(
   () => $q.dark.isActive,
   (val) => {
     // console.log(val ? 'On dark mode' : 'On light mode')
-    localStorage.setItem('darkMode', JSON.stringify(val));
+    localStorage.setItem('dark-mode', JSON.stringify(val));
   },
 );
 
