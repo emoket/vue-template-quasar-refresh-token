@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useUserAuth } from '../../composables/useUserAuth';
-import DarkToggle from '../../theme/DarkToggle.vue';
+import { privateMenus } from '../../menus';
+import { symRoundedMenu } from '@quasar/extras/material-symbols-rounded';
+
+// Components import
+// import DarkToggle from '../../theme/DarkToggle.vue';
+import SettingToggle from '../../theme/SettingToggle.vue';
 import FullscreenToogle from '../../components/FullscreenToggle.vue';
 import LogoutIconButton from '../../components/LogoutIconButton.vue';
 import Footer from '../../components/Footer.vue';
@@ -10,12 +15,12 @@ import EssentialLink from '../../components/EssentialLink.vue';
 const { loadingUser } = useUserAuth();
 
 const drawer = ref(false);
-const miniState = ref(true);
-</script>
 
-<script lang="ts">
-import { privateMenus } from '../../menus';
-import { symRoundedMenu } from '@quasar/extras/material-symbols-rounded';
+// Store things
+import { storeToRefs } from 'pinia';
+import { useLayoutStore } from '../../store/useLayoutStore';
+const layoutStore = useLayoutStore();
+const { menuMini, menuAutoExpand } = storeToRefs(layoutStore);
 </script>
 
 <template>
@@ -40,7 +45,9 @@ import { symRoundedMenu } from '@quasar/extras/material-symbols-rounded';
 
         <FullscreenToogle />
 
-        <DarkToggle />
+        <!-- <DarkToggle /> -->
+
+        <SettingToggle />
 
         <q-separator vertical inset />
 
@@ -51,9 +58,9 @@ import { symRoundedMenu } from '@quasar/extras/material-symbols-rounded';
     <q-drawer
       v-model="drawer"
       show-if-above
-      :mini="miniState"
-      @mouseover="miniState = false"
-      @mouseout="miniState = true"
+      :mini="menuMini"
+      @mouseover="menuAutoExpand ? (menuMini = false) : ''"
+      @mouseout="menuAutoExpand ? (menuMini = true) : ''"
       mini-to-overlay
       :width="200"
       :breakpoint="500"
@@ -79,4 +86,3 @@ import { symRoundedMenu } from '@quasar/extras/material-symbols-rounded';
     <Footer />
   </q-layout>
 </template>
-../../menus
