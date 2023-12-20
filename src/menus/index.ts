@@ -12,6 +12,7 @@ import {
   symRoundedFamilyHistory,
   symRoundedHardDrive,
   symRoundedPivotTableChart,
+  symRoundedViewKanban,
 } from '@quasar/extras/material-symbols-rounded';
 
 const privateMenus = [
@@ -52,11 +53,6 @@ const dhxMenus = [
     to: '/dhx/gantt',
   },
   {
-    title: '@dhx/trial-eventcalendar (X)',
-    icon: symRoundedToday,
-    to: '/dhx/event-calendar',
-  },
-  {
     title: 'dhtmlx-scheduler',
     icon: symRoundedCalendarMonth,
     to: '/dhx/scheduler',
@@ -76,11 +72,7 @@ const dhxMenus = [
     icon: symRoundedTable,
     to: '/dhx/spreadsheet',
   },
-  {
-    title: '@dhx/trial-todolist (X)',
-    icon: symRoundedChecklist,
-    to: '/dhx/todolist',
-  },
+
   {
     title: 'cdn-diagram',
     icon: symRoundedFamilyHistory,
@@ -95,6 +87,21 @@ const dhxMenus = [
     title: 'cdn-pivot',
     icon: symRoundedPivotTableChart,
     to: '/dhx/pivot',
+  },
+  {
+    title: '@dhx/trial-eventcalendar (X)',
+    icon: symRoundedToday,
+    to: '/dhx/event-calendar',
+  },
+  {
+    title: '@dhx/trial-kanban (X)',
+    icon: symRoundedViewKanban,
+    to: '/dhx/kanban',
+  },
+  {
+    title: '@dhx/trial-todolist (X)',
+    icon: symRoundedChecklist,
+    to: '/dhx/todolist',
   },
 ];
 
