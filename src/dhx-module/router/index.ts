@@ -58,5 +58,17 @@ export default {
       meta: { requiresAuth: true },
       component: () => import('../Views/VaultCdnParent.vue'),
     },
+    {
+      path: '/dhx/pivot',
+      name: 'dhx-pivot',
+      meta: { requiresAuth: true },
+      component: () => import('../Views/PivotEvents.vue'),
+    },
+    {
+      path: '/dhx/kanban',
+      name: 'dhx-kanban',
+      meta: { requiresAuth: true },
+      component: () => import('../Views/Kanban.vue'),
+    },
   ],
 };
