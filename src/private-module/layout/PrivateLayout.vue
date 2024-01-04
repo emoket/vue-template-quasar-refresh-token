@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useUserAuth } from '../../composables/useUserAuth';
-import { privateMenus } from '../../menus';
+import { useUserAuth } from '@/composables/useUserAuth';
+import { privateMenus } from '@/menus';
 import { symRoundedMenu } from '@quasar/extras/material-symbols-rounded';
 
 // Components import
-// import DarkToggle from '../../theme/DarkToggle.vue';
-import SettingToggle from '../../theme/SettingToggle.vue';
-import FullscreenToogle from '../../components/FullscreenToggle.vue';
-import LogoutIconButton from '../../components/LogoutIconButton.vue';
-import Footer from '../../components/Footer.vue';
-import EssentialLink from '../../components/EssentialLink.vue';
+// import DarkToggle from '@/theme/DarkToggle.vue';
+import SettingToggle from '@/theme/SettingToggle.vue';
+import FullscreenToogle from '@/components/FullscreenToggle.vue';
+import LogoutIconButton from '@/components/LogoutIconButton.vue';
+import Footer from '@/components/Footer.vue';
+import EssentialLink from '@/components/EssentialLink.vue';
 
 const { loadingUser } = useUserAuth();
 
@@ -18,15 +18,15 @@ const drawer = ref(false);
 
 // Store things
 import { storeToRefs } from 'pinia';
-import { useLayoutStore } from '../../store/useLayoutStore';
+import { useLayoutStore } from '@/store/useLayoutStore';
 const layoutStore = useLayoutStore();
 const { menuMini, menuAutoExpand } = storeToRefs(layoutStore);
 </script>
 
 <template>
   <div v-if="loadingUser">Loading....</div>
-  <q-layout v-else view="hHh lpR fFf" reveal>
-    <q-header bordered :class="$q.dark.isActive ? 'bg-dark' : 'bg-primary'">
+  <q-layout v-else view="hHh lpR fFf">
+    <q-header bordered class="bg-dark">
       <q-toolbar class="q-px-none">
         <q-btn stretch flat :icon="symRoundedMenu" @click="drawer = !drawer" />
 
@@ -65,7 +65,6 @@ const { menuMini, menuAutoExpand } = storeToRefs(layoutStore);
       :width="200"
       :breakpoint="500"
       bordered
-      :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'"
     >
       <q-scroll-area class="fit" :horizontal-thumb-style="{ opacity: '0' }">
         <q-list padding>
@@ -86,3 +85,13 @@ const { menuMini, menuAutoExpand } = storeToRefs(layoutStore);
     <Footer />
   </q-layout>
 </template>
+
+<!-- <style scoped lang="scss">
+.app-header {
+  background: $gray-01;
+  border-bottom: 1px solid $gray-03;
+}
+.lnb-drawer {
+  background: $gray-01;
+}
+</style> -->
