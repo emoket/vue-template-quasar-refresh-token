@@ -1,19 +1,22 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-import { Quasar, AppFullscreen } from 'quasar';
+import App from './App.vue';
 import router from './router';
 
+import { Quasar, AppFullscreen, setCssVar } from 'quasar';
+
 import quasarLang from 'quasar/lang/es';
-// Import icon libraries
+
+// import icon libraries
 import '@quasar/extras/roboto-font/roboto-font.css';
 import '@quasar/extras/material-icons/material-icons.css';
-// Import Quasar css
+
+// import quasar css
 import 'quasar/src/css/index.sass';
 
 const pinia = createPinia();
-import App from './App.vue';
-
 const app = createApp(App);
+
 app.use(router);
 app.use(pinia);
 app.use(Quasar, {
@@ -25,7 +28,15 @@ app.use(Quasar, {
   config: {
     dark: 'auto',
     brand: {
-      // primary: '#e46262',
+      primary: '#5e64ff',
+      secondary: '#26A69A',
+      accent: '#9C27B0',
+      positive: '#21BA45',
+      negative: '#C10015',
+      info: '#31CCEC',
+      warning: '#F2C037',
+      dark: '#3A4049',
+      blue: '#42b0ff',
       // ... or all other brand colors
     },
     //notify: {...}, // default set of options for Notify Quasar plugin
@@ -34,4 +45,11 @@ app.use(Quasar, {
     // ..and many more (check Installation card on each Quasar component/directive/plugin)
   },
 });
+
+// TODO: 적용이 안 된다
+// more colors
+setCssVar('primary-darkened', '#33aa');
+setCssVar('blue-custom', '#42b0ff');
+setCssVar('green', '#1ecb4e');
+
 app.mount('#app');
