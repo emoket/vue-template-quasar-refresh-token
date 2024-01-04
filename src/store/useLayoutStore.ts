@@ -1,11 +1,23 @@
+import { useLocalStorage } from '@vueuse/core';
 import { defineStore } from 'pinia';
-import { ref } from 'vue';
 
-export const useLayoutStore = defineStore('layoutStore', () => {
-  const menuAutoExpand = ref(
-    (localStorage['menu-auto-expand'] || 'false') === 'true',
-  );
-  const menuMini = ref((localStorage['menu-mini'] || 'false') === 'true');
+export const useLayoutStore = defineStore('layoutStore', {
+  state: () => ({
+    menuMini: useLocalStorage(
+      'menu-mini',
+      (localStorage.getItem('menu-mini') || 'false') === 'false',
+    ),
+    menuAutoExpand: useLocalStorage(
+      'menu-auto-expand',
+      (localStorage.getItem('menu-auto-expand') || 'false') === 'false',
+    ),
 
-  return { menuAutoExpand, menuMini };
+    darkMode: useLocalStorage(
+      'dark-mode',
+      (localStorage.getItem('dark-mode') || 'true') === 'true',
+    ),
+  }),
+  getters: {
+    // isAutoMode: (state) => state.darkMode === 'auto',
+  },
 });
