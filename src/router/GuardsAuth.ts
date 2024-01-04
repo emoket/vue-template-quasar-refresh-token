@@ -1,5 +1,5 @@
-import { AuthorizeStatus } from '../auth/interfaces';
-import { useUserStore } from '../store/useUserStore';
+import { AuthorizeStatus } from '@/auth/interfaces';
+import { useUserStore } from '@/store/useUserStore';
 import { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
 
 export const requiereAuthGuard = async (

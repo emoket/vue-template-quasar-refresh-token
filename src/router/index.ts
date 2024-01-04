@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { routes } from './routes';
-import { AuthorizeStatus } from '../auth/interfaces';
-import { useUserStore } from '../store/useUserStore';
-import { IsDevMode, VITE_PATH_BUILD } from '../config/environment';
+import { AuthorizeStatus } from '@/auth/interfaces';
+import { useUserStore } from '@/store/useUserStore';
+import { IsDevMode, VITE_PATH_BUILD } from '@/config/environment';
 
 const buildPath: string = IsDevMode ? '/' : VITE_PATH_BUILD;
 

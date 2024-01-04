@@ -1,7 +1,7 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
-import router from '../router/index';
-import { Username, Credentials, AuthorizeStatus } from '../auth/interfaces';
+import router from '@/router/index';
+import { Username, Credentials, AuthorizeStatus } from '@/auth/interfaces';
 
 export const useUserStore = defineStore('user', () => {
   const userData = ref<Username | null>(null);
@@ -59,7 +59,7 @@ export const useUserStore = defineStore('user', () => {
     console.log('payload = ' + JSON.stringify(payload));
     try {
       loadingUser.value = true;
-      await setCurrentUserData({
+      setCurrentUserData({
         username: 'admin',
         role: 'admin',
         accessToken: 'Token JWT inicial',
