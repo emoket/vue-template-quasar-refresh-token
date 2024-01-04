@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DarkToggle from '../../theme/DarkToggle.vue';
+// import DarkToggle from '../../theme/DarkToggle.vue';
 import Footer from '../../components/Footer.vue';
 </script>
 
@@ -15,7 +15,7 @@ import Footer from '../../components/Footer.vue';
         </q-toolbar-title>
 
         <!-- toggle button -->
-        <DarkToggle />
+        <!-- <DarkToggle /> -->
       </q-toolbar>
     </q-header>
 
