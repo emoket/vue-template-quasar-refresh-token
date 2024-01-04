@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import DarkToggle from '../../theme/DarkToggle.vue';
+// import DarkToggle from '../../theme/DarkToggle.vue';
 import Footer from '../../components/Footer.vue';
 import EssentialLink from '../../components/EssentialLink.vue';
 import { roundMenu, roundHome } from '@quasar/extras/material-icons-round';
@@ -25,7 +25,7 @@ const miniState = ref(true);
 
         <q-space />
 
-        <DarkToggle />
+        <!-- <DarkToggle /> -->
       </q-toolbar>
     </q-header>
 

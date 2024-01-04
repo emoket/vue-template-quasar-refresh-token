@@ -1,4 +1,4 @@
-import PublicLayout from '../layout/PublicLayout.vue';
+import PublicLayout from '@/auth/layout/PublicLayout.vue';
 
 export default {
   component: PublicLayout,
@@ -9,7 +9,7 @@ export default {
       name: 'login',
       meta: { requiresAuth: false },
       component: () =>
-        import(/* webpackChunkName: "login" */ '../Pages/LoginPage.vue'),
+        import(/* webpackChunkName: "login" */ '@/auth/Pages/LoginPage.vue'),
     },
   ],
 };
