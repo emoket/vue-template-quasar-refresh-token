@@ -27,22 +27,22 @@
 import { defineAsyncComponent } from 'vue';
 
 const PieChart = defineAsyncComponent(
-  () => import('../../components/charts/PieChart.vue'),
+  () => import('@/components/charts/PieChart.vue'),
 );
 const ScatterPlot = defineAsyncComponent(
-  () => import('../../components/charts/ScatterPlot.vue'),
+  () => import('@/components/charts/ScatterPlot.vue'),
 );
 const LineChart = defineAsyncComponent(
-  () => import('../../components/charts/LineChart.vue'),
+  () => import('@/components/charts/LineChart.vue'),
 );
 const BarChart = defineAsyncComponent(
-  () => import('../../components/charts/BarChart.vue'),
+  () => import('@/components/charts/BarChart.vue'),
 );
 const AreaChart = defineAsyncComponent(
-  () => import('../../components/charts/AreaChart.vue'),
+  () => import('@/components/charts/AreaChart.vue'),
 );
 const GuageChart = defineAsyncComponent(
-  () => import('../../components/charts/GuageChart.vue'),
+  () => import('@/components/charts/GuageChart.vue'),
 );
 </script>
 
