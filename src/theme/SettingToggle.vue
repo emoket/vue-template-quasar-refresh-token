@@ -4,26 +4,20 @@ import {
   symRoundedDarkMode,
   symRoundedLightMode,
   symRoundedSettings,
+  symRoundedSettingsNightSight,
 } from '@quasar/extras/material-symbols-rounded';
 
 const $q = useQuasar();
-const isDarkMode = JSON.parse(localStorage.getItem('dark-mode') || '{}');
+// const isDarkMode = JSON.parse(localStorage.getItem('dark-mode') || '{}');
 
-$q.dark.set(isDarkMode === '' ? 'auto' : isDarkMode); // or false or "auto"
-
-import { watch } from 'vue';
-watch(
-  () => $q.dark.isActive,
-  (val) => {
-    console.log(val ? 'On dark mode' : 'On light mode');
-    localStorage.setItem('dark-mode', JSON.stringify(val));
-  },
-);
+// $q.dark.set(isDarkMode === '' ? 'auto' : isDarkMode); // or false or "auto"
 
 import { storeToRefs } from 'pinia';
-import { useLayoutStore } from '../store/useLayoutStore';
+import { useLayoutStore } from '@/store/useLayoutStore';
+import { onMounted, ref } from 'vue';
+
 const layoutStore = useLayoutStore();
-const { menuMini, menuAutoExpand } = storeToRefs(layoutStore);
+const { menuMini, menuAutoExpand, darkMode } = storeToRefs(layoutStore);
 
 const updateToggleMini = (value: boolean) => {
   localStorage.setItem('menu-mini', JSON.stringify(value));
@@ -32,6 +26,33 @@ const updateToggleMini = (value: boolean) => {
 const updateToggleExpand = (value: boolean) => {
   localStorage.setItem('menu-auto-expand', JSON.stringify(value));
 };
+
+const isDarkMode = ref(darkMode);
+console.log('isDarkMode', isDarkMode.value);
+
+import { watch } from 'vue';
+watch(
+  () => isDarkMode.value,
+  (val) => {
+    console.log('watch dark', val);
+    $q.dark.set(val === null ? 'auto' : val);
+    localStorage.setItem(
+      'dark-mode',
+      JSON.stringify(val === null ? 'auto' : val),
+    );
+  },
+);
+
+watch(
+  () => $q.dark.mode,
+  (val) => {
+    console.log('$q.dark.mode', val);
+  },
+);
+
+onMounted(() => {
+  $q.dark.set(JSON.parse(localStorage.getItem('dark-mode') || ''));
+});
 </script>
 
 <template>
@@ -43,15 +64,22 @@ const updateToggleExpand = (value: boolean) => {
 
         <q-item tag="label" v-ripple>
           <q-item-section>
-            <q-item-label>{{
-              $q.dark.isActive ? '다크 모드' : '라이트 모드'
-            }}</q-item-label>
+            <q-item-label>
+              {{
+                isDarkMode === null
+                  ? '시스템 모드'
+                  : isDarkMode === true
+                    ? '다크 모드'
+                    : '라이트 모드'
+              }}
+            </q-item-label>
           </q-item-section>
           <q-item-section side>
             <q-toggle
               color="blue"
-              v-model="$q.dark.isActive"
-              val="battery"
+              toggle-indeterminate
+              :indeterminate-icon="symRoundedSettingsNightSight"
+              v-model="isDarkMode"
               :icon="
                 $q.dark.isActive ? symRoundedDarkMode : symRoundedLightMode
               "
