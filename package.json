@@ -4,12 +4,14 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
+    "serve": "vite",
+    "build-dev": "vue-tsc --noEmit && vite build --mode dev",
+    "build-rel": "vue-tsc --noEmit && vite build --mode rel",
     "lint": "eslint --ext .js,.ts,.vue ./",
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
-    "test": "echo \"No test specified\" && exit 0",
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postinstall": "npx patch-package",
+    "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
     "@dhx/trial-chart": "^8.3.3",
@@ -26,6 +28,7 @@
     "dhx-suite": "^8.3.3",
     "echarts": "^5.4.3",
     "from-cdn": "^1.0.1",
+    "keycloak-js": "^23.0.3",
     "pinia": "^2.0.30",
     "quasar": "^2.11.5",
     "vue": "^3.2.45",
