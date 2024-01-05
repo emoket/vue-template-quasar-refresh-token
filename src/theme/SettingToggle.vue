@@ -77,6 +77,7 @@ onMounted(() => {
           <q-item-section side>
             <q-toggle
               color="blue"
+              keep-color
               toggle-indeterminate
               :indeterminate-icon="symRoundedSettingsNightSight"
               v-model="isDarkMode"
@@ -98,6 +99,7 @@ onMounted(() => {
           <q-item-section side top>
             <q-toggle
               color="green"
+              keep-color
               v-model="menuMini"
               @update:model-value="updateToggleMini"
             />
@@ -112,6 +114,7 @@ onMounted(() => {
           <q-item-section side top>
             <q-toggle
               color="red"
+              keep-color
               v-model="menuAutoExpand"
               @update:model-value="updateToggleExpand"
             />

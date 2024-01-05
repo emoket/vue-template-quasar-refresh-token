@@ -20,7 +20,7 @@ defineProps({
 </script>
 
 <template>
-  <q-item clickable v-ripple tag="a" :to="to">
+  <q-item clickable v-ripple :to="to" class="q-py-none">
     <q-item-section v-if="icon" avatar>
       <q-icon :name="icon" />
     </q-item-section>

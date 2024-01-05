@@ -8,7 +8,7 @@ import { symRoundedMenu } from '@quasar/extras/material-symbols-rounded';
 // import DarkToggle from '@/theme/DarkToggle.vue';
 import SettingToggle from '@/theme/SettingToggle.vue';
 import FullscreenToogle from '@/components/FullscreenToggle.vue';
-import LogoutIconButton from '@/components/LogoutIconButton.vue';
+// import LogoutIconButton from '@/components/LogoutIconButton.vue';
 import Footer from '@/components/Footer.vue';
 import EssentialLink from '@/components/EssentialLink.vue';
 
@@ -19,6 +19,7 @@ const drawer = ref(false);
 // Store things
 import { storeToRefs } from 'pinia';
 import { useLayoutStore } from '@/store/useLayoutStore';
+import UserProfile from '@/components/UserProfile.vue';
 const layoutStore = useLayoutStore();
 const { menuMini, menuAutoExpand } = storeToRefs(layoutStore);
 </script>
@@ -49,9 +50,9 @@ const { menuMini, menuAutoExpand } = storeToRefs(layoutStore);
 
         <SettingToggle />
 
-        <q-separator vertical inset />
+        <!-- <q-separator vertical inset /> -->
 
-        <LogoutIconButton />
+        <!-- <LogoutIconButton /> -->
       </q-toolbar>
     </q-header>
 
@@ -62,12 +63,16 @@ const { menuMini, menuAutoExpand } = storeToRefs(layoutStore);
       @mouseover="menuAutoExpand ? (menuMini = false) : ''"
       @mouseout="menuAutoExpand ? (menuMini = true) : ''"
       mini-to-overlay
-      :width="200"
+      :width="250"
       :breakpoint="500"
       bordered
     >
-      <q-scroll-area class="fit" :horizontal-thumb-style="{ opacity: '0' }">
-        <q-list padding>
+      <q-scroll-area
+        class="fit"
+        :horizontal-thumb-style="{ opacity: '0' }"
+        style="height: calc(100% - 100px)"
+      >
+        <q-list>
           <!-- Menu List -->
           <EssentialLink
             v-for="link in privateMenus"
@@ -75,6 +80,8 @@ const { menuMini, menuAutoExpand } = storeToRefs(layoutStore);
             v-bind="link"
           />
         </q-list>
+
+        <UserProfile />
       </q-scroll-area>
     </q-drawer>
 

@@ -1,6 +1,7 @@
 <template>
   <RouterView />
 </template>
+
 <style>
 @import 'dhx-suite/codebase/suite.min.css';
 @import './index.css';
